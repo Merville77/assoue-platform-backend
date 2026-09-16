@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: assoue-postgres
+    environment:
+      POSTGRES_DB: assoue_db
+      POSTGRES_USER: assoue_user
+      POSTGRES_PASSWORD: assoue_pass
+    ports:
+      - "5433:5432"
+    volumes:
+      - assoue_pgdata:/var/lib/postgresql/data
+
+volumes:
+  assoue_pgdata:
