@@ -1,6 +1,7 @@
 package com.assoue.platform.controller;
 
 import com.assoue.platform.dto.RegisterRequest;
+import com.assoue.platform.dto.UtilisateurResponse;
 import com.assoue.platform.entity.Utilisateur;
 import com.assoue.platform.service.UtilisateurService;
 import jakarta.validation.Valid;
@@ -22,8 +23,8 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<Utilisateur> register(@Valid @RequestBody RegisterRequest request) {
-        Utilisateur utilisateur = utilisateurService.inscrire(request);
-        return ResponseEntity.status(HttpStatus.CREATED).body(utilisateur);
-    }
+    public ResponseEntity<UtilisateurResponse> register(@Valid @RequestBody RegisterRequest request) {
+    Utilisateur utilisateur = utilisateurService.inscrire(request);
+    return ResponseEntity.status(HttpStatus.CREATED).body(new UtilisateurResponse(utilisateur));
+}
 }
